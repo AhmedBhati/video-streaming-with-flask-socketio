@@ -4,7 +4,7 @@ from time import sleep
 import cv2
 import json
 import base64
-#cap=cv2.VideoCapture(0)
+#cap=cv2.VideoCapture(0)  ##when removing debug=True or using gevent or eventlet uncomment this line and comment the cap=cv2.VideoCapture(0) in gen(json)
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '78581099#lkjh'
 socketio = SocketIO(app)
@@ -31,7 +31,7 @@ def gen(json):
 
 def message(json, methods=['GET','POST']):
 	print("Recieved message")
-	socketio.emit('image', json, )
+	socketio.emit('image', json )
 
 if __name__== "__main__":
 	socketio.run(app,debug=True, host='127.0.0.1', port=5000) 	
