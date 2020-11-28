@@ -36,5 +36,7 @@ def disconnect():
 	print("DISCONNECTED")
 
 if __name__ == '__main__':
-	sio.connect('http://192.168.0.108:5000')
+	#sio.connect('http://192.168.0.108:5000') ## uncomment this line when the server is on remote system change the ip address with the ip address 
+	#of the system where the server is running.
+	sio.connect('0.0.0.0:5000')
 	sio.wait()
