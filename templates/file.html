@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title> flask pingpong</title>
+</head>
+<body>
+	<div id="div"> 
+<!--		<p id="value">Number of clients connected: 0</p> -->
+	</div>
+	<div id="div1"> 
+		<p id="value">Socket ID's:</p> 
+	</div>
+
+	<!--<div id="1"> 
+		<p id="value"> </p> 
+	</div>-->
+	<img id="1">
+	<br>
+	<br>
+	<br>
+	<img id="2">
+	<br>
+	<br>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+	<script type="text/javascript" charset="utf-8">
+		const socket = io('/');
+		/*	
+		socket.on('stream_response', function(msg)
+		{
+        document.getElementById("value").innerHTML="Number of clients connected:"+msg;
+        socket.emit('pingpong');
+        });
+
+        socket.on('response', function(msg)
+        {
+		console.log(socket.id);
+		var node=document.createElement('li');
+		var textnode=document.createTextNode(msg);
+		node.appendChild(textnode);
+        document.getElementById("div1").appendChild(node);
+        });
+        */
+        socket.on('response', function(msg)
+        {
+        	console.log(socket.id);
+        	console.log(msg.key)
+        	var k=msg.key;
+        	var r=msg.data;
+        	console.log(k);
+        	//if(k=="1")
+        	//{
+        		const image_element=document.getElementById(k);
+        		image_element.src="data:image/jpeg;base64,"+r;
+        		console.log("reached here");
+        	//}
+        	//else
+        	//	document.getElementById(k).innerHTML=r;
+        });
+    </script>
+</body>
+</html>
